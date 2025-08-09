@@ -11,7 +11,7 @@ load_dotenv()
 EMAIL = os.getenv("EMAIL_ADDRESS")
 PASSWORD = os.getenv("EMAIL_PASSWORD")
 
-# IMAP_SERVER = "imap.gmail.com" Später für Selektion von Mails
+# IMAP_SERVER = "imap.gmail.com" later project
 # with IMAPClient(IMAP_SERVER, ssl=True) as server:
     # server.login(EMAIL, PASSWORD)
 
@@ -26,7 +26,7 @@ def loadBerichtsheftReminder():
         smtp.login(EMAIL, PASSWORD)
         smtp.send_message(message)
 
-#schedule.every(1).minutes.do(loadBerichtsheftReminder) Testzwecke
+#schedule.every(1).minutes.do(loadBerichtsheftReminder) for testing purposes
 schedule.every().friday.at("16:30").do(loadBerichtsheftReminder)
 
 while True:
@@ -34,3 +34,4 @@ while True:
     time.sleep(1)
 
 print("Script läuft!")
+
